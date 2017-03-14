@@ -39,8 +39,12 @@ for root, dirs, files in os.walk(path):
                     all_size[size][1] = getmd5(all_size[size][0])
 
                 if new_md5 in all_size[size]:
-                    os.remove(real_path)
-                    print('删除', file)
+                    try:
+                        os.remove(real_path)
+                        print('删除', file)
+                    except:
+                        continue
+
                     total_delete += 1
 
                 else:
